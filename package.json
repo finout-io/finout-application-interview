@@ -1,0 +1,18 @@
+{
+  "name": "vtag-interview",
+  "version": "1.0.0",
+  "description": "Virtual tagging engine — interview exercise",
+  "type": "module",
+  "scripts": {
+    "seed": "node scripts/seed.js",
+    "test": "vitest run tests/step1.test.js tests/step2.test.js",
+    "test:step3": "vitest run tests/step3.test.js",
+    "test:all": "vitest run"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.4.3"
+  },
+  "devDependencies": {
+    "vitest": "^1.6.0"
+  }
+}

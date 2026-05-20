@@ -1,0 +1,22 @@
+{
+  "name": "vtag-interview",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "postCreateCommand": "npm install && npm run seed && npm install -g @anthropic-ai/claude-code",
+  "secrets": {
+    "ANTHROPIC_API_KEY": {
+      "description": "Anthropic API key — gives you access to Claude Code (claude command in terminal)"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "alexcvzz.vscode-sqlite"
+      ],
+      "settings": {
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+date,service,account_id,region,usage_type,cost
+2024-01-01,AmazonEC2,333333333333,us-east-1,BoxUsage:t3.medium,45.50
+2024-01-01,AmazonEC2,333333333333,us-east-1,BoxUsage:m5.large,120.00
+2024-01-01,AmazonEC2,333333333333,us-west-2,BoxUsage:t3.medium,38.00
+2024-01-01,AmazonEC2,444444444444,us-east-1,BoxUsage:r5.xlarge,200.00
+2024-01-01,AmazonEC2,444444444444,eu-west-1,BoxUsage:t3.medium,42.00
+2024-01-01,AmazonEKS,333333333333,us-east-1,NodeUsage:t3.large,95.00
+2024-01-01,AmazonEKS,444444444444,us-west-2,NodeUsage:m5.xlarge,180.00
+2024-01-01,AmazonRDS,333333333333,us-east-1,InstanceUsage:db.t3.medium,75.00
+2024-01-01,AmazonRDS,444444444444,us-west-2,InstanceUsage:db.r5.large,150.00
+2024-01-01,AmazonRDS,555555555555,eu-west-1,InstanceUsage:db.t3.small,55.00
+2024-01-01,AmazonDynamoDB,333333333333,us-east-1,ReadCapacityUnit-Hrs,12.50
+2024-01-01,AmazonDynamoDB,444444444444,us-west-2,WriteCapacityUnit-Hrs,18.75
+2024-01-01,AWSLambda,333333333333,us-east-1,Lambda-GB-Second,8.00
+2024-01-01,AWSLambda,444444444444,us-west-2,Lambda-GB-Second,15.00
+2024-01-01,AWSLambda,555555555555,eu-west-1,Lambda-GB-Second,6.50
+2024-01-01,AmazonAPIGateway,333333333333,us-east-1,ApiGatewayRequest,4.25
+2024-01-01,AmazonAPIGateway,444444444444,us-west-2,ApiGatewayRequest,7.80
+2024-01-01,AmazonS3,333333333333,us-east-1,TimedStorage-ByteHrs,22.00
+2024-01-01,AmazonS3,555555555555,us-west-2,TimedStorage-ByteHrs,18.50
+2024-01-01,AmazonS3,111111111111,us-east-1,TimedStorage-ByteHrs,35.00
+2024-01-01,AmazonS3,222222222222,eu-west-1,TimedStorage-ByteHrs,28.00
+2024-01-01,AmazonCloudFront,111111111111,us-east-1,DataTransfer-Out-Bytes,45.00
+2024-01-01,AmazonCloudFront,333333333333,us-east-1,DataTransfer-Out-Bytes,30.00
+2024-01-01,AmazonEC2,111111111111,us-east-1,BoxUsage:t3.large,88.00
+2024-01-01,AmazonEC2,222222222222,us-west-2,BoxUsage:t3.medium,55.00
+2024-01-02,AmazonEC2,333333333333,us-east-1,BoxUsage:t3.medium,45.50
+2024-01-02,AmazonRDS,333333333333,us-east-1,InstanceUsage:db.t3.medium,75.00
+2024-01-02,AWSLambda,333333333333,us-east-1,Lambda-GB-Second,8.00
+2024-01-02,AmazonS3,111111111111,us-east-1,TimedStorage-ByteHrs,35.00
+2024-01-02,AmazonEC2,444444444444,us-east-1,BoxUsage:r5.xlarge,200.00
+2024-01-01,Amazon EC2,333333333333,us-east-1,BoxUsage:t3.medium,62.00
+2024-01-01,Amazon EC2,444444444444,us-east-1,BoxUsage:m5.xlarge,145.00
+2024-01-02,Amazon EC2,333333333333,us-east-1,BoxUsage:t3.medium,62.00
+2024-01-02,Amazon EC2,555555555555,us-west-2,BoxUsage:t3.small,28.50
+2024-01-03,Amazon EC2,444444444444,us-east-1,BoxUsage:r5.large,175.00

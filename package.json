@@ -5,14 +5,15 @@
   "type": "module",
   "scripts": {
     "seed": "node scripts/seed.js",
-    "test": "vitest run tests/step1.test.js tests/step2.test.js",
+    "test:step1": "vitest run tests/step1.test.js",
+    "test:step2": "vitest run tests/step2.test.js",
     "test:step3": "vitest run tests/step3.test.js",
     "test:all": "vitest run"
   },
   "dependencies": {
-    "better-sqlite3": "^9.4.3"
+    "better-sqlite3": "12.10.0"
   },
   "devDependencies": {
-    "vitest": "^1.6.0"
+    "vitest": "4.1.8"
   }
 }

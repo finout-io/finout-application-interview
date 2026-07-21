@@ -20,27 +20,34 @@ describe('evaluateCondition', () => {
 
   test('in — matches member of array', () => {
     const row = { service: 'AmazonEC2' };
-    expect(evaluateCondition(row, { field: 'service', operator: 'in', values: ['AmazonEC2', 'AmazonEKS'] })).toBe(true);
+    expect(evaluateCondition(row, { field: 'service', operator: 'in', value: ['AmazonEC2', 'AmazonEKS'] })).toBe(true);
   });
 
   test('in — rejects non-member', () => {
     const row = { service: 'AmazonS3' };
-    expect(evaluateCondition(row, { field: 'service', operator: 'in', values: ['AmazonEC2', 'AmazonEKS'] })).toBe(false);
+    expect(evaluateCondition(row, { field: 'service', operator: 'in', value: ['AmazonEC2', 'AmazonEKS'] })).toBe(false);
   });
 
   test('not_in — matches non-member', () => {
     const row = { service: 'AmazonS3' };
-    expect(evaluateCondition(row, { field: 'service', operator: 'not_in', values: ['AmazonEC2', 'AmazonEKS'] })).toBe(true);
+    expect(evaluateCondition(row, { field: 'service', operator: 'not_in', value: ['AmazonEC2', 'AmazonEKS'] })).toBe(true);
   });
 
   test('not_in — rejects member', () => {
     const row = { service: 'AmazonEC2' };
-    expect(evaluateCondition(row, { field: 'service', operator: 'not_in', values: ['AmazonEC2', 'AmazonEKS'] })).toBe(false);
+    expect(evaluateCondition(row, { field: 'service', operator: 'not_in', value: ['AmazonEC2', 'AmazonEKS'] })).toBe(false);
   });
 
   test('contains — matches substring', () => {
     const row = { usage_type: 'BoxUsage:t3.medium' };
     expect(evaluateCondition(row, { field: 'usage_type', operator: 'contains', value: 'BoxUsage' })).toBe(true);
+  });
+
+  test('unsupported operator throws a clear error', () => {
+    const row = { service: 'AmazonEC2' };
+    expect(() =>
+      evaluateCondition(row, { field: 'service', operator: 'startswith', value: 'Amazon' })
+    ).toThrow(/operator/i);
   });
 });
 
@@ -48,7 +55,7 @@ describe('evaluateCondition', () => {
 describe('evaluateRule', () => {
   const multiCondRule = {
     conditions: [
-      { field: 'service', operator: 'in', values: ['AmazonEC2', 'AmazonEKS'] },
+      { field: 'service', operator: 'in', value: ['AmazonEC2', 'AmazonEKS'] },
       { field: 'region',  operator: 'eq', value: 'us-east-1' },
     ],
     value: 'Infrastructure-East',

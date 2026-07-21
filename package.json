@@ -5,10 +5,13 @@
   "type": "module",
   "scripts": {
     "seed": "node scripts/seed.js",
+    "test": "vitest run tests/step1.test.js tests/step2.test.js",
     "test:step1": "vitest run tests/step1.test.js",
     "test:step2": "vitest run tests/step2.test.js",
     "test:step3": "vitest run tests/step3.test.js",
-    "test:all": "vitest run"
+    "test:all": "vitest run",
+    "benchmark:seed": "node scripts/generate-benchmark-data.js",
+    "benchmark": "node scripts/benchmark.js"
   },
   "dependencies": {
     "better-sqlite3": "12.10.0"

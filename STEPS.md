@@ -10,7 +10,7 @@ Open `src/vtag-engine.js`. Implement the three functions marked `TODO`:
 
 Run tests:
 ```bash
-npm test:step1
+npm run test:step1
 ```
 
 All tests in `step1.test.js` must pass before moving on.

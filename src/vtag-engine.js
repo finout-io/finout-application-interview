@@ -2,10 +2,10 @@
 // Supported operators
 // ─────────────────────────────────────────────────────────────────────────────
 const OPERATORS = {
-  eq:       (rowVal, condVal)  => rowVal === condVal,
-  in:       (rowVal, condVals) => condVals.includes(rowVal),
-  not_in:   (rowVal, condVals) => !condVals.includes(rowVal),
-  contains: (rowVal, condVal)  => String(rowVal).includes(condVal),
+  eq:       (rowVal, condVal) => rowVal === condVal,
+  in:       (rowVal, condVal) => condVal.includes(rowVal),
+  not_in:   (rowVal, condVal) => !condVal.includes(rowVal),
+  contains: (rowVal, condVal) => String(rowVal).includes(condVal),
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -16,14 +16,8 @@ const OPERATORS = {
  * Evaluates a single condition against a billing row.
  *
  * @param {Object} row       - one billing row from the DB
- * @param {Object} condition - { field, operator, value?, values? }
+ * @param {Object} condition - { field, operator, value }
  * @returns {boolean}
- *
- * Hints:
- *  - row[condition.field] gives you the value from the row
- *  - use the OPERATORS map above
- *  - 'in' and 'not_in' use condition.values (array)
- *  - 'eq' and 'contains' use condition.value (string)
  */
 export function evaluateCondition(row, condition) {
   // TODO
@@ -84,15 +78,6 @@ export function runVtagInMemory(db, vtag) {
  *
  * @param {Object} vtag - { name, rules, default }
  * @returns {string}    - SQL fragment (the full CASE...END AS <name> expression)
- *
- * Hints:
- *  - each rule  → one WHEN ... THEN clause
- *  - conditions within a rule are joined with AND
- *  - operator 'in'  → field IN ('a','b','c')
- *  - operator 'eq'  → field = 'value'
- *  - vtag.default   → ELSE clause
- *  - finish with    → END AS <vtag.name>
- *  - escape single quotes in values: replace ' with ''
  */
 export function buildCaseWhenSQL(vtag) {
   // TODO

@@ -43,6 +43,18 @@ describe('evaluateCondition', () => {
     expect(evaluateCondition(row, { field: 'usage_type', operator: 'contains', value: 'BoxUsage' })).toBe(true);
   });
 
+  test('between — matches value within range (inclusive)', () => {
+    const row = { cost: 45 };
+    expect(evaluateCondition(row, { field: 'cost', operator: 'between', value: [40, 50] })).toBe(true);
+    expect(evaluateCondition({ cost: 40 }, { field: 'cost', operator: 'between', value: [40, 50] })).toBe(true);
+    expect(evaluateCondition({ cost: 50 }, { field: 'cost', operator: 'between', value: [40, 50] })).toBe(true);
+  });
+
+  test('between — rejects value outside range', () => {
+    const row = { cost: 55 };
+    expect(evaluateCondition(row, { field: 'cost', operator: 'between', value: [40, 50] })).toBe(false);
+  });
+
   test('unsupported operator throws a clear error', () => {
     const row = { service: 'AmazonEC2' };
     expect(() =>
@@ -71,6 +83,10 @@ describe('evaluateRule', () => {
 
   test('second condition fails → false (AND logic)', () => {
     expect(evaluateRule({ service: 'AmazonEC2', region: 'us-west-2' }, multiCondRule)).toBe(false);
+  });
+
+  test('empty conditions array always matches', () => {
+    expect(evaluateRule({ service: 'AnythingAtAll' }, { conditions: [], value: 'CatchAll' })).toBe(true);
   });
 });
 

@@ -25,6 +25,9 @@ This works, but at scale (millions of rows) it becomes a bottleneck.
 Implement `buildCaseWhenSQL(vtag)` to generate an equivalent SQL `CASE WHEN` expression,
 so the database does the work instead.
 
+`buildCaseWhenSQL` must correctly translate **every** operator defined in the
+`OPERATORS` map in `vtag-engine.js` — not just the ones `TEAM_VTAG` happens to use.
+
 Example of what the output should look like:
 
 ```sql
@@ -42,7 +45,7 @@ END AS team
 
 Run tests:
 ```bash
-npm test:step2
+npm run test:step2
 ```
 
 All tests in `step2.test.js` must pass before moving on.

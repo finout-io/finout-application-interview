@@ -6,6 +6,7 @@ const OPERATORS = {
   in:       (rowVal, condVal) => condVal.includes(rowVal),
   not_in:   (rowVal, condVal) => !condVal.includes(rowVal),
   contains: (rowVal, condVal) => String(rowVal).includes(condVal),
+  between:  (rowVal, condVal) => rowVal >= condVal[0] && rowVal <= condVal[1],
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -75,6 +76,9 @@ export function runVtagInMemory(db, vtag) {
  *     ...
  *     ELSE 'Unallocated'
  *   END AS team
+ *
+ * Must handle every operator in the OPERATORS map above, not just the ones used by
+ * the vtag you're testing against.
  *
  * @param {Object} vtag - { name, rules, default }
  * @returns {string}    - SQL fragment (the full CASE...END AS <name> expression)

@@ -30,6 +30,52 @@ describe('buildCaseWhenSQL', () => {
 });
 
 // ─────────────────────────────────────────────────────────────────────────────
+describe('buildCaseWhenSQL — between operator', () => {
+  // Not part of TEAM_VTAG (numeric range check) — buildCaseWhenSQL must still
+  // support it, per the OPERATORS map in vtag-engine.js.
+  const COST_RANGE_VTAG = {
+    name: 'cost_band',
+    rules: [
+      { conditions: [{ field: 'cost', operator: 'between', value: [40, 50] }], value: 'MidCost' },
+    ],
+    default: 'Other',
+  };
+
+  test('generates valid SQL that correctly buckets rows by cost range', () => {
+    const caseExpr = buildCaseWhenSQL(COST_RANGE_VTAG);
+    const rows = db.prepare(`SELECT *, ${caseExpr} FROM billing`).all();
+
+    const midCost = rows.filter(r => r.cost_band === 'MidCost');
+    expect(midCost.length).toBe(4);
+    midCost.forEach(r => {
+      expect(r.cost).toBeGreaterThanOrEqual(40);
+      expect(r.cost).toBeLessThanOrEqual(50);
+    });
+
+    const other = rows.filter(r => r.cost_band === 'Other');
+    other.forEach(r => expect(r.cost < 40 || r.cost > 50).toBe(true));
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+describe('buildCaseWhenSQL — rule with empty conditions', () => {
+  const CATCH_ALL_VTAG = {
+    name: 'flag',
+    rules: [
+      { conditions: [], value: 'AlwaysMatches' },
+    ],
+    default: 'Never',
+  };
+
+  test('a rule with no conditions matches every row', () => {
+    const caseExpr = buildCaseWhenSQL(CATCH_ALL_VTAG);
+    const rows = db.prepare(`SELECT *, ${caseExpr} FROM billing`).all();
+    expect(rows.length).toBeGreaterThan(0);
+    rows.forEach(r => expect(r.flag).toBe('AlwaysMatches'));
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
 describe('runVtagSQL — results match in-memory', () => {
   test('same row count', () => {
     const sqlRows = runVtagSQL(db, TEAM_VTAG);

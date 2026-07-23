@@ -20,7 +20,6 @@ export const TEAM_VTAG = {
   name: 'team',
   rules: [
     {
-      // More specific rule first — EC2/EKS in us-east-1 specifically
       conditions: [
         { field: 'service', operator: 'in', value: ['AmazonEC2', 'AmazonEKS'] },
         { field: 'region',  operator: 'eq', value: 'us-east-1' },
@@ -28,7 +27,6 @@ export const TEAM_VTAG = {
       value: 'Infrastructure-East',
     },
     {
-      // Broader rule — EC2/EKS anywhere else
       conditions: [
         { field: 'service', operator: 'in', value: ['AmazonEC2', 'AmazonEKS'] },
       ],
@@ -47,7 +45,6 @@ export const TEAM_VTAG = {
       value: 'Backend',
     },
     {
-      // Catch-all for two shared-services accounts — must come AFTER service-based rules
       conditions: [
         { field: 'account_id', operator: 'in', value: ['111111111111', '222222222222'] },
       ],

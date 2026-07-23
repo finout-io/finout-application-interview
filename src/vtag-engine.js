@@ -25,8 +25,7 @@ export function evaluateCondition(row, condition) {
 }
 
 /**
- * Evaluates all conditions in a rule (AND logic).
- * Returns true only if EVERY condition matches.
+ * Does this row satisfy ALL conditions in a rule?
  *
  * @param {Object} row  - one billing row
  * @param {Object} rule - { conditions: [...], value: string }

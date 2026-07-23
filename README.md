@@ -19,14 +19,10 @@ See `src/vtags.js` for the full definition you'll be working with.
 
 Read `STEPS.md` and follow the steps in order.
 
-```bash
-npm test              # Step 1 + Step 2
-```
 
 ## Useful commands
 
-The SQLite extension is pre-installed, so you don't need a terminal one-liner to look
-at the data:
+The SQLite extension is pre-installed - in order to explorer the data
 
 1. Command Palette (`Cmd/Ctrl+Shift+P`) → **SQLite: Open Database** → select
    `data/billing.db`. It shows up in the **SQLITE EXPLORER** panel in the sidebar,

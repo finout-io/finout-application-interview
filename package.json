@@ -14,9 +14,9 @@
     "benchmark": "node scripts/benchmark.js"
   },
   "dependencies": {
-    "better-sqlite3": "12.10.0"
+    "better-sqlite3": "13.0.1"
   },
   "devDependencies": {
-    "vitest": "4.1.8"
+    "vitest": "4.1.10"
   }
 }

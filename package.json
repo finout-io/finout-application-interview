@@ -1,0 +1,18 @@
+{
+  "name": "finout-application-interview",
+  "version": "2.0.0",
+  "description": "Finout engineering interview \u2014 review an endpoint, then extend it",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "allocate": "node src/run-allocation.ts"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vitest": "4.1.10"
+  }
+}

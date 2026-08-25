@@ -20,8 +20,6 @@ Run it on those two rules and `Wiz`'s untagged rows — `$1200` and `$800` of `p
 `$2840` the endpoint moves today, and it should still all be accounted for when
 you're done.
 
-Then one test — you pick which case is worth pinning.
-
 The rows are `seedRows()` at the bottom of `src/db/mock-db.ts`, and `npm run
 allocate` prints them.
 
